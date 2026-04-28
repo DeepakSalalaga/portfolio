@@ -1,89 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Selected design and product work by Deepak Salagala.">
-  <title>Projects | Deepak Salagala</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Projects page." />
+    <title>Projects</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a class="brand" href="index.html">Deepak</a>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="projects">
+    <div class="page-shell">
+      <header class="site-header" id="site-header"></header>
+      <main id="page-content"></main>
+      <footer class="site-footer" id="site-footer"></footer>
+    </div>
 
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="about.html">About</a>
-          <a href="skills.html">Skills</a>
-          <a href="projects.html">Projects</a>
-          <a href="experience.html">Experience</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section class="projects-section section" id="projects">
-        <div class="container">
-          <div class="section-heading">
-            <span class="section-tag">Projects</span>
-            <h2>Selected work that blends experience design with business value.</h2>
-          </div>
-
-          <div class="projects-grid">
-            <article class="project-card glass-card">
-              <div class="project-image-wrap">
-                <!-- Replace project image here -->
-                <img src="deepak.webp" alt="MaaBooking project preview">
-              </div>
-              <div class="project-content">
-                <span class="project-label">Case Study 01</span>
-                <h3>MaaBooking</h3>
-                <p>Farmhouse booking platform with food and event services.</p>
-                <a class="button button-secondary" href="contact.html">View Details</a>
-              </div>
-            </article>
-
-            <article class="project-card glass-card">
-              <div class="project-image-wrap">
-                <!-- Replace project image here -->
-                <img src="deepak.webp" alt="Hectnow project preview">
-              </div>
-              <div class="project-content">
-                <span class="project-label">Case Study 02</span>
-                <h3>Hectnow</h3>
-                <p>Designed complete UI/UX for app and website.</p>
-                <a class="button button-secondary" href="contact.html">View Details</a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-wrap">
-        <div>
-          <p class="footer-name">Deepak Salagala</p>
-          <p class="footer-tagline">Designing thoughtful digital experiences with visual clarity and strategy.</p>
-        </div>
-
-        <div class="footer-links">
-          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="mailto:your-email@example.com">Email</a>
-          <a href="index.html">Back to Top</a>
-        </div>
-      </div>
-    </footer>
-  </div>
-</body>
+    <script src="data.js"></script>
+    <script src="render.js"></script>
+  </body>
 </html>

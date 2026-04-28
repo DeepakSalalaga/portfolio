@@ -1,80 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Skills - UI/UX, Graphic Design, Digital Marketing, and 3D.">
-  <title>Skills | Deepak Salagala</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Skills page." />
+    <title>Skills</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a class="brand" href="index.html">Deepak</a>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="skills">
+    <div class="page-shell">
+      <header class="site-header" id="site-header"></header>
+      <main id="page-content"></main>
+      <footer class="site-footer" id="site-footer"></footer>
+    </div>
 
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="about.html">About</a>
-          <a href="skills.html">Skills</a>
-          <a href="projects.html">Projects</a>
-          <a href="experience.html">Experience</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section class="skills-section section" id="skills">
-        <div class="container">
-          <div class="section-heading">
-            <span class="section-tag">Skills</span>
-            <h2>A well-rounded creative skill set for modern digital products.</h2>
-          </div>
-
-          <div class="skills-grid">
-            <article class="glass-card skill-card">
-              <h3>UI/UX Design</h3>
-              <p>Wireframes, user flows, high-fidelity interfaces, and design systems that feel polished and practical.</p>
-            </article>
-            <article class="glass-card skill-card">
-              <h3>Graphic Design</h3>
-              <p>Visual assets, brand creatives, social media designs, and layouts that strengthen brand identity.</p>
-            </article>
-            <article class="glass-card skill-card">
-              <h3>Digital Marketing</h3>
-              <p>Creative strategy with performance thinking to support reach, engagement, and conversion goals.</p>
-            </article>
-            <article class="glass-card skill-card">
-              <h3>3D &amp; Blender</h3>
-              <p>Simple 3D visuals and product-focused explorations that add depth to presentations and concepts.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-wrap">
-        <div>
-          <p class="footer-name">Deepak Salagala</p>
-          <p class="footer-tagline">Designing thoughtful digital experiences with visual clarity and strategy.</p>
-        </div>
-
-        <div class="footer-links">
-          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="mailto:your-email@example.com">Email</a>
-          <a href="index.html">Back to Top</a>
-        </div>
-      </div>
-    </footer>
-  </div>
-</body>
+    <script src="data.js"></script>
+    <script src="render.js"></script>
+  </body>
 </html>

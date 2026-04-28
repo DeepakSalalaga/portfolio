@@ -1,110 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta
-    name="description"
-    content="Deepak Salagala portfolio - UI/UX Designer, Graphic Designer, and Digital Marketer."
-  >
-  <title>Deepak Salagala | UI/UX Designer Portfolio</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Deepak Salagala portfolio - UI/UX Designer, Graphic Designer, and Digital Marketer."
+    />
+    <title>Portfolio</title>
 
-  <!-- Google font: change here if you want a different font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <!-- Change logo text here -->
-        <a class="brand" href="index.html">Deepak</a>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="home">
+    <div class="page-shell">
+      <header class="site-header" id="site-header"></header>
+      <main id="page-content"></main>
+      <footer class="site-footer" id="site-footer"></footer>
+    </div>
 
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="about.html">About</a>
-          <a href="skills.html">Skills</a>
-          <a href="projects.html">Projects</a>
-          <a href="experience.html">Experience</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero-section" id="home">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <span class="eyebrow">UI/UX Designer | Graphic Designer | Digital Marketer</span>
-
-            <!-- Change name here -->
-            <h1>Deepak Salagala</h1>
-
-            <!-- Change title here -->
-            <p class="hero-role">UI/UX Designer &amp; Digital Marketer</p>
-
-            <!-- Change hero line here -->
-            <p class="hero-text">
-              I design user experiences that are visually engaging and drive real results.
-            </p>
-
-            <div class="hero-actions">
-              <a class="button button-primary" href="projects.html">View Work</a>
-              <a class="button button-secondary" href="contact.html">Contact Me</a>
-            </div>
-
-            <div class="hero-metrics">
-              <article class="metric-card">
-                <strong>3+</strong>
-                <span>Years of creative problem solving</span>
-              </article>
-              <article class="metric-card">
-                <strong>2</strong>
-                <span>Flagship brands shaped end-to-end</span>
-              </article>
-              <article class="metric-card">
-                <strong>UI + Marketing</strong>
-                <span>Design decisions backed by growth thinking</span>
-              </article>
-            </div>
-          </div>
-
-          <div class="hero-visual">
-            <div class="profile-card">
-              <div class="profile-glow"></div>
-
-              <!-- Replace profile image here -->
-              <img src="deepak.webp" alt="Portrait of Deepak Salagala">
-
-              <div class="profile-badge">
-                <span>Available for exciting product roles</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-wrap">
-        <div>
-          <p class="footer-name">Deepak Salagala</p>
-          <p class="footer-tagline">Designing thoughtful digital experiences with visual clarity and strategy.</p>
-        </div>
-
-        <div class="footer-links">
-          <!-- Replace social links here -->
-          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="mailto:your-email@example.com">Email</a>
-          <a href="index.html">Back to Top</a>
-        </div>
-      </div>
-    </footer>
-  </div>
-</body>
+    <script src="data.js"></script>
+    <script src="render.js"></script>
+  </body>
 </html>

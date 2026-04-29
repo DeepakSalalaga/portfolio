@@ -27,10 +27,21 @@ window.PORTFOLIO_DATA = {
     { label: "Contact",    href: "contact.html" }
   ],
 
+  /* ---- Marquee strip below the hero (rotating words) ---- */
+  marqueeWords: [
+    "UI / UX Design",
+    "Brand Systems",
+    "Digital Marketing",
+    "Visual Identity",
+    "Product Thinking",
+    "Motion & 3D"
+  ],
+
   /* ---- Home / Hero section ---- */
   hero: {
-    eyebrow: "UI/UX Designer | Graphic Designer | Digital Marketer",
+    eyebrow: "Available for select projects — 2026",
     name: "Deepak Salagala",
+    accentWord: "Salagala",
     role: "UI/UX Designer & Digital Marketer",
     tagline: "I design user experiences that are visually engaging and drive real results.",
     image: "deepak.webp",

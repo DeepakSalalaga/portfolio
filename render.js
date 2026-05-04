@@ -43,21 +43,38 @@
   /* ---- Footer ---- */
   const footerEl = document.getElementById("site-footer");
   if (footerEl && D.footer) {
+    const footerIcon = (label) => {
+      const key = String(label || "").toLowerCase();
+      if (key.includes("linkedin")) {
+        return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9.3H3.2v11h3.3v-11ZM6.8 5.9c0-1-.8-1.8-1.9-1.8S3 4.9 3 5.9s.8 1.8 1.9 1.8 1.9-.8 1.9-1.8Zm13.9 8.1c0-3-1.6-4.9-4.2-4.9-1.7 0-2.7.9-3.1 1.6V9.3h-3.2v11h3.3v-5.5c0-1.5.7-2.5 2-2.5s1.9.9 1.9 2.6v5.4h3.3V14Z"/></svg>`;
+      }
+      if (key.includes("email")) {
+        return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15A1.5 1.5 0 0 1 21 8v8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 16V8a1.5 1.5 0 0 1 1.5-1.5Zm.9 2.2 6.6 4.7 6.6-4.7H5.4Zm13.8 1.9-6.6 4.6a1 1 0 0 1-1.2 0l-6.6-4.6V16h14.4v-5.4Z"/></svg>`;
+      }
+      return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a7.5 7.5 0 0 0-6.4 11.4L4.8 20l5.3-1.4A7.5 7.5 0 1 0 12 3.5Zm0 2a5.5 5.5 0 0 1 0 11c-.6 0-1.2-.1-1.8-.3l-.3-.1-2.5.7.4-2.4-.2-.3A5.5 5.5 0 0 1 12 5.5Zm-2.2 4.1c-.3 0-.6.3-.6.6v1.3c0 .3.3.6.6.6h4.4c.3 0 .6-.3.6-.6v-1.3c0-.3-.3-.6-.6-.6H9.8Zm0 3.2c-.3 0-.6.3-.6.6s.3.6.6.6h2.6c.3 0 .6-.3.6-.6s-.3-.6-.6-.6H9.8Z"/></svg>`;
+    };
     const links = D.footer.links
       .map(
         (l) =>
-          `<a href="${esc(l.href)}"${
+          `<a class="footer-icon-button" href="${esc(l.href)}" aria-label="${esc(l.label)}"${
             l.external ? ' target="_blank" rel="noreferrer"' : ""
-          }>${esc(l.label)}</a>`
+          }>
+            <span class="footer-icon">${footerIcon(l.label)}</span>
+            <span>${esc(l.label)}</span>
+          </a>`
       )
       .join("");
     footerEl.innerHTML = `
       <div class="container footer-wrap">
-        <div>
+        <div class="footer-copy">
+          <span class="footer-kicker">Let's connect</span>
           <p class="footer-name">${esc(D.footer.name)}</p>
           <p class="footer-tagline">${esc(D.footer.tagline)}</p>
         </div>
-        <div class="footer-links">${links}</div>
+        <div class="footer-panel">
+          <p class="footer-panel-title">Available for UI/UX, product design, and digital projects.</p>
+          <div class="footer-links">${links}</div>
+        </div>
       </div>`;
   }
 
@@ -98,6 +115,9 @@
           </article>`
       )
       .join("");
+    const intro = h.intro
+      ? `<p class="hero-intro" data-reveal data-delay="3">${esc(h.intro)}</p>`
+      : "";
     set(
       "page-content",
       `
@@ -108,6 +128,7 @@
             <h1 data-reveal data-delay="1">${nameHtml}</h1>
             <p class="hero-role" data-reveal data-delay="2">${esc(h.role)}</p>
             <p class="hero-text" data-reveal data-delay="2">${esc(h.tagline)}</p>
+            ${intro}
             <div class="hero-actions">${actions}</div>
             <div class="hero-metrics">${metrics}</div>
           </div>
@@ -150,6 +171,7 @@
           <div class="about-grid">
             <article class="glass-card about-card" data-reveal>
               <p>${esc(a.body)}</p>
+              ${a.bodySecond ? `<p>${esc(a.bodySecond)}</p>` : ""}
             </article>
             <div class="highlight-list">${highlights}</div>
           </div>
@@ -164,18 +186,26 @@
     const s = D.skills;
     const items = s.items
       .map(
-        (i, idx) => `
-        <article class="glass-card skill-card" data-reveal data-delay="${
-          (idx % 4) + 1
-        }">
-          <span class="skill-num">${String(idx + 1).padStart(2, "0")} / ${String(
-          s.items.length
-        ).padStart(2, "0")}</span>
-          <div>
-            <h3>${esc(i.title)}</h3>
-            <p>${esc(i.text)}</p>
-          </div>
-        </article>`
+        (i, idx) => {
+          const points = i.points && i.points.length
+            ? `<ul class="skill-points">${i.points
+                .map((point) => `<li>${esc(point)}</li>`)
+                .join("")}</ul>`
+            : "";
+          return `
+          <article class="glass-card skill-card" data-reveal data-delay="${
+            (idx % 4) + 1
+          }">
+            <span class="skill-num">${String(idx + 1).padStart(2, "0")} / ${String(
+            s.items.length
+          ).padStart(2, "0")}</span>
+            <div>
+              <h3>${esc(i.title)}</h3>
+              <p>${esc(i.text)}</p>
+              ${points}
+            </div>
+          </article>`;
+        }
       )
       .join("");
     set(
@@ -222,6 +252,7 @@
           <div class="section-heading" data-reveal>
             <span class="section-tag">Projects</span>
             <h2>${esc(p.heading)}</h2>
+            ${p.subheading ? `<p class="section-subheading">${esc(p.subheading)}</p>` : ""}
           </div>
           <div class="projects-grid">${items}</div>
         </div>
@@ -234,13 +265,14 @@
     const e = D.experience;
     const items = e.items
       .map(
-        (i) => `
-        <article class="timeline-card" data-reveal>
-          <div>
+        (i, idx) => `
+        <article class="timeline-card" data-reveal data-delay="${idx + 1}">
+          <span class="timeline-index">${String(idx + 1).padStart(2, "0")}</span>
+          <div class="timeline-main">
             <span class="timeline-company">${esc(i.company)}</span>
             <h3>${esc(i.role)}</h3>
+            <p>${esc(i.text)}</p>
           </div>
-          <p>${esc(i.text)}</p>
           <span class="timeline-duration">${esc(i.duration)}</span>
         </article>`
       )
@@ -263,6 +295,67 @@
   /* ---- CONTACT ---- */
   if (page === "contact" && D.contact) {
     const c = D.contact;
+    const contactCards = [
+      {
+        label: "Email",
+        value: c.email,
+        hint: "Best for project briefs, job opportunities, and design discussions.",
+        href: `mailto:${c.email}`,
+        icon: "mail",
+        external: false
+      },
+      {
+        label: "Phone",
+        value: c.phone,
+        hint: "Use this for quick calls or time-sensitive conversations.",
+        href: `tel:${c.phoneHref}`,
+        icon: "phone",
+        external: false
+      },
+      {
+        label: "LinkedIn",
+        value: c.linkedinLabel,
+        hint: "Connect with me professionally and view my profile.",
+        href: c.linkedin,
+        icon: "linkedin",
+        external: true
+      }
+    ];
+    const contactIcon = (icon) => {
+      if (icon === "phone") {
+        return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 4.5 9.4 4c.7-.1 1.4.3 1.6 1l.8 2.6c.2.6 0 1.2-.5 1.6l-1.2.9a11.5 11.5 0 0 0 4 4l.9-1.2c.4-.5 1-.7 1.6-.5l2.6.8c.7.2 1.1.9 1 1.6l-.5 2.2c-.2.8-.9 1.4-1.8 1.4A14.4 14.4 0 0 1 5.8 6.3c0-.9.6-1.6 1.4-1.8Z"/></svg>`;
+      }
+      if (icon === "linkedin") {
+        return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9.3H3.2v11h3.3v-11ZM6.8 5.9c0-1-.8-1.8-1.9-1.8S3 4.9 3 5.9s.8 1.8 1.9 1.8 1.9-.8 1.9-1.8Zm13.9 8.1c0-3-1.6-4.9-4.2-4.9-1.7 0-2.7.9-3.1 1.6V9.3h-3.2v11h3.3v-5.5c0-1.5.7-2.5 2-2.5s1.9.9 1.9 2.6v5.4h3.3V14Z"/></svg>`;
+      }
+      return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15A1.5 1.5 0 0 1 21 8v8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 16V8a1.5 1.5 0 0 1 1.5-1.5Zm.9 2.2 6.6 4.7 6.6-4.7H5.4Zm13.8 1.9-6.6 4.6a1 1 0 0 1-1.2 0l-6.6-4.6V16h14.4v-5.4Z"/></svg>`;
+    };
+    const details = contactCards
+      .map(
+        (item, idx) => `
+          <a class="contact-card" data-reveal data-delay="${idx + 1}" href="${esc(item.href)}"${
+          item.external ? ' target="_blank" rel="noreferrer"' : ""
+        }>
+            <span class="contact-card-icon">${contactIcon(item.icon)}</span>
+            <span class="contact-card-copy">
+              <span>${esc(item.label)}</span>
+              <strong>${esc(item.value)}</strong>
+              <small>${esc(item.hint)}</small>
+            </span>
+          </a>`
+      )
+      .join("");
+    const steps = c.steps && c.steps.length
+      ? c.steps
+          .map(
+            (step, idx) => `
+              <li>
+                <span>${String(idx + 1).padStart(2, "0")}</span>
+                <strong>${esc(step)}</strong>
+              </li>`
+          )
+          .join("")
+      : "";
     set(
       "page-content",
       `
@@ -273,20 +366,23 @@
               <span class="section-tag">Contact</span>
               <h2>${esc(c.heading)}</h2>
               <p>${esc(c.text)}</p>
-            </div>
-            <div class="contact-details">
-              <a data-reveal data-delay="1" href="mailto:${esc(c.email)}">${esc(
-        c.email
-      )}</a>
-              <a data-reveal data-delay="2" href="tel:${esc(c.phoneHref)}">${esc(
-        c.phone
-      )}</a>
-              <a data-reveal data-delay="3" href="${esc(
-                c.linkedin
-              )}" target="_blank" rel="noreferrer">${esc(c.linkedinLabel)}</a>
-              <a class="button button-primary magnetic" data-reveal data-delay="4" href="mailto:${esc(
+              <p>${esc(c.intro)}</p>
+              <div class="contact-status">
+                <span>${esc(c.availability)}</span>
+                <span>${esc(c.location)}</span>
+                <span>${esc(c.response)}</span>
+              </div>
+              <a class="button button-primary magnetic" data-reveal data-delay="2" href="mailto:${esc(
                 c.email
               )}">${esc(c.ctaLabel)}</a>
+              ${steps ? `<ol class="contact-steps" data-reveal data-delay="3">${steps}</ol>` : ""}
+            </div>
+            <div class="contact-details">
+              <div class="contact-details-head" data-reveal>
+                <span>Direct contact</span>
+                <strong>Choose the easiest way to reach me.</strong>
+              </div>
+              ${details}
             </div>
           </div>
         </div>
@@ -360,8 +456,8 @@
     });
   });
 
-  /* Skill cards spotlight follow */
-  document.querySelectorAll(".skill-card").forEach((el) => {
+  /* Card spotlight follow */
+  document.querySelectorAll(".skill-card, .project-card, .timeline-card").forEach((el) => {
     el.addEventListener("mousemove", (e) => {
       const r = el.getBoundingClientRect();
       el.style.setProperty("--mx", `${e.clientX - r.left}px`);
